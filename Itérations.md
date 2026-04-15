@@ -1,0 +1,6 @@
+Voici les modifications à effectuer (pour l'instant) :
+- Il faut que la section "Portfolio" respecte EXACTEMENT ce qui est présent sur mon CV design : il faut remonter un peu la section (car il y a de la place au-dessus). La zone du lien doit apparaître AVANT la flèche, et la flèche ne doit pas être "compressée" (les dimensions de l'image ne doivent pas être modifiées).
+- J'ai ajouté la typographie "Giaza" dans mes fichiers : TU DOIS LA RAJOUTER à la place du fallback "Playfair Display" (présent dans le dossier "Assets"). Le titre "Sami BENDRISS" doit QUOIQU'IL ARRIVE être présent sur UNE SEULE LIGNE (et non pas 2 comme ici), sans changer la taille du texte.
+- Le titre H2 "Coordonnées" doit être situé au milieu.
+- Concernant les rectangles des titres H2, plusieurs choses. 1- Sur la colonne de droite, les rectangles doivent prendre en longueur UNIQUEMENT la longueur du texte H2 (comme sur la colonne de gauche). 2- Les rectangles doivent en réalité être visibles UNIQUEMENT sur la moitié basse de la zone H2 (effet de style présent sur mon CV).
+- Rajoute une option pour télécharger le CV final en format PDF.

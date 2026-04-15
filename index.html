@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Sami BENDRISS - Alternance Communication</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <button class="toolbar-btn btn-red" onclick="printCV()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Télécharger en PDF
+        </button>
+        <button class="toolbar-btn btn-dark" onclick="exportHTML()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path>
+                <polyline points="7 11 12 16 17 11"></polyline>
+                <line x1="12" y1="16" x2="12" y2="4"></line>
+            </svg>
+            Exporter HTML
+        </button>
+        <button class="toolbar-btn btn-dark" onclick="openImportModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path>
+                <polyline points="7 9 12 4 17 9"></polyline>
+                <line x1="12" y1="4" x2="12" y2="16"></line>
+            </svg>
+            Importer HTML
+        </button>
+    </div>
+
+    <!-- Modal d'import -->
+    <div class="modal-overlay" id="importModal">
+        <div class="modal">
+            <h3>Importer du code HTML</h3>
+            <div class="modal-tabs">
+                <button class="modal-tab active" onclick="switchTab('paste')">Coller du code</button>
+                <button class="modal-tab" onclick="switchTab('file')">Importer un fichier</button>
+            </div>
+            <div class="modal-panel active" id="panel-paste">
+                <textarea id="htmlInput" placeholder="Collez votre code HTML ici..."></textarea>
+            </div>
+            <div class="modal-panel" id="panel-file">
+                <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                    <p>Glissez un fichier .html ici ou cliquez pour parcourir</p>
+                    <input type="file" id="fileInput" accept=".html,.htm">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeImportModal()">Annuler</button>
+                <button class="btn-confirm" onclick="confirmImport()">Importer</button>
+            </div>
+        </div>
+    </div>
+    <!-- CV chargé depuis cv.html -->
+    <iframe id="cv-frame" src="cv.html" scrolling="no" style="border:none;display:block;overflow:hidden;"></iframe>
+    <script>
+        // === AUTO-RESIZE IFRAME ===
+        const cvFrame = document.getElementById('cv-frame');
+        cvFrame.addEventListener('load', function() {
+            const doc = cvFrame.contentDocument || cvFrame.contentWindow.document;
+            doc.documentElement.style.overflow = 'hidden';
+            cvFrame.style.height = doc.documentElement.scrollHeight + 'px';
+            cvFrame.style.width = doc.documentElement.scrollWidth + 'px';
+            cvFrame.style.minWidth = '100%';
+        });
+
+        // === PRINT / PDF ===
+        function printCV() {
+            cvFrame.contentWindow.focus();
+            cvFrame.contentWindow.print();
+        }
+
+        // === EXPORT HTML ===
+        function exportHTML() {
+            const doc = cvFrame.contentDocument || cvFrame.contentWindow.document;
+            const cvPage = doc.querySelector('.cv-page');
+            const html = cvPage.outerHTML;
+            const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'CV_Sami_BENDRISS.html';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // === IMPORT MODAL ===
+        function openImportModal() {
+            document.getElementById('importModal').classList.add('active');
+        }
+        function closeImportModal() {
+            document.getElementById('importModal').classList.remove('active');
+            document.getElementById('htmlInput').value = '';
+        }
+        function switchTab(tab) {
+            document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.modal-panel').forEach(p => p.classList.remove('active'));
+            if (tab === 'paste') {
+                document.querySelector('.modal-tab:first-child').classList.add('active');
+                document.getElementById('panel-paste').classList.add('active');
+            } else {
+                document.querySelector('.modal-tab:last-child').classList.add('active');
+                document.getElementById('panel-file').classList.add('active');
+            }
+        }
+        function confirmImport() {
+            const pastePanel = document.getElementById('panel-paste');
+            if (pastePanel.classList.contains('active')) {
+                const html = document.getElementById('htmlInput').value.trim();
+                if (html) applyImport(html);
+            }
+            closeImportModal();
+        }
+        function applyImport(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newCV = doc.querySelector('.cv-page') || doc.querySelector('main') || doc.body;
+            if (newCV) {
+                const iframeDoc = cvFrame.contentDocument || cvFrame.contentWindow.document;
+                const cvPage = iframeDoc.querySelector('.cv-page');
+                cvPage.innerHTML = newCV.innerHTML;
+            }
+        }
+
+        // === FILE IMPORT ===
+        const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) readFile(file);
+        });
+        dropZone.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', function() {
+            dropZone.classList.remove('dragover');
+        });
+        dropZone.addEventListener('drop', function(e) {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file) readFile(file);
+        });
+        function readFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                applyImport(e.target.result);
+                closeImportModal();
+            };
+            reader.readAsText(file);
+        }
+
+        // Fermer la modal en cliquant sur l'overlay
+        document.getElementById('importModal').addEventListener('click', function(e) {
+            if (e.target === this) closeImportModal();
+        });
+    </script>
+</body>
+</html>

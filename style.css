@@ -1,0 +1,474 @@
+/* ==================== FONTS ==================== */
+@font-face {
+    font-family: "Giaza";
+    src: url("Assets/Giaza.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ==================== RESET ==================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==================== PAGE ==================== */
+html, body {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #000000;
+    overflow-wrap: break-word;
+}
+
+/* ==================== CV PAGE CONTAINER ==================== */
+.cv-page {
+    width: 21cm;
+    height: 29.7cm;
+    display: grid;
+    grid-template-columns: 7.69cm 1fr;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #ffffff;
+}
+
+/* ==================== LEFT COLUMN ==================== */
+.left-column {
+    grid-column: 1;
+    grid-row: 1;
+    background: #d9d9d9;
+    padding: 1cm 0.5cm 0.35cm;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== RIGHT COLUMN ==================== */
+.right-column {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 1.2cm 1cm 0.4cm 1cm;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== PHOTO ==================== */
+.photo-container {
+    width: 5.75cm;
+    height: 5.75cm;
+    border-radius: 50%;
+    border: 5px solid #000000;
+    overflow: hidden;
+    margin: 0 auto 0.45cm;
+    margin-bottom: 0.3cm;
+    flex-shrink: 0;
+}
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==================== NAME (H1) ==================== */
+h1 {
+    font-family: "Giaza", serif;
+    font-size: 36pt;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: -0.2cm;
+    white-space: nowrap;
+}
+
+/* ==================== SUBTITLE ==================== */
+.subtitle {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 16pt;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 0.8cm;
+}
+
+/* ==================== PROFILE ==================== */
+.profil p {
+    font-size: 11pt;
+    font-weight: 700;
+    font-style: normal;
+    text-align: justify;
+    line-height: 1.4;
+    /* margin-bottom: 1cm; */
+}
+
+/* ==================== SECTION TITLES - COMMON ==================== */
+.left-column > section > h2,
+.right-column > section > h2 {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14pt;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    width: fit-content;
+    padding: 0cm 0.2cm;
+    line-height: 1.4;
+    background-repeat: no-repeat;
+    background-position: left bottom 0.1em;
+    background-size: calc(100% - 0.1em) 0.5em;
+}
+
+/* ==================== SECTION TITLES - LEFT COLUMN ==================== */
+.left-column > section > h2 {
+    margin-bottom: 0.1cm;
+    background-image: linear-gradient(#ffffff, #ffffff);
+}
+
+/* ==================== SECTION TITLES - RIGHT COLUMN ==================== */
+.right-column > section > h2 {
+    margin-bottom: 0.2cm;
+    background-image: linear-gradient(#dfdfdf, #dfdfdf);
+}
+
+/* ==================== LEFT COLUMN SECTIONS ==================== */
+.left-column > section {
+    margin-bottom: 0.5cm;
+}
+
+/* ==================== RIGHT COLUMN SECTIONS ==================== */
+.right-column > section {
+    margin-bottom: 0.8cm;
+}
+
+/* ==================== CONTACT ITEMS ==================== */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3cm;
+    margin-bottom: 0.15cm;
+    margin-left: 0.25cm;
+    font-size: 10pt;
+    font-weight: 700;
+}
+.contact-item svg {
+    width: 0.5cm;
+    height: 0.5cm;
+    flex-shrink: 0;
+}
+.contact-item .linkedin-icon {
+    width: 0.5cm;
+    height: 0.5cm;
+    min-width: 0.5cm;
+    flex-shrink: 0;
+    border-radius: 3px;
+    display: block;
+}
+
+/* ==================== LINKS ==================== */
+a {
+    color: #0061ff;
+    text-decoration: underline;
+    font-weight: 700;
+}
+.contact-link {
+    color: #000000;
+    text-decoration: none;
+}
+.contact-item a[href^="tel:"] {
+    color: #000000;
+    text-decoration: none;
+}
+.contact-item a[href^="mailto:"] {
+    color: #000000;
+}
+
+/* ==================== LISTS ==================== */
+ul {
+    list-style-type: disc;
+    padding-left: 1.2em;
+    margin: 0;
+}
+li {
+    font-size: 10pt;
+    line-height: 1.4;
+    margin-bottom: 0.03cm;
+}
+
+/* ==================== EXPERIENCE ==================== */
+.experience {
+    margin-bottom: 0.6cm;
+}
+.experience:last-child {
+    margin-bottom: 0;
+}
+.job-title {
+    font-weight: 700;
+    /* text-decoration: underline; */
+    color: #ff3131;
+}
+.company {
+    font-weight: 700;
+    text-decoration: underline;
+}
+.date-line {
+    font-weight: 700;
+    margin-bottom: 0.08cm;
+}
+.keyword {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* ==================== FORMATIONS ==================== */
+.formation {
+    margin-bottom: 0.3cm;
+    font-weight: 700;
+}
+.formation-title {
+    font-weight: 700;
+    text-decoration: underline;
+}
+.formation-red {
+    color: #ff3131;
+    font-weight: 700;
+}
+
+/* ==================== LANGUES ==================== */
+.lang-name {
+    font-weight: 700;
+}
+
+/* ==================== PORTFOLIO ==================== */
+.portfolio {
+    margin-left: -0.2cm;
+}
+.portfolio-content {
+    display: flex;
+    align-items: center;
+    gap: 0.3cm;
+}
+.qr-code {
+    width: 2.54cm;
+    height: 2.54cm;
+    flex-shrink: 0;
+}
+.portfolio-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1cm;
+}
+.portfolio-label {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: -0.2cm;
+}
+.portfolio-url {
+    font-size: 8pt;
+    color: #0061ff;
+    text-decoration: underline;
+}
+.arrow {
+    width: 2.02cm;
+    height: auto;
+    mix-blend-mode: multiply;
+    align-self: flex-start;
+}
+
+/* ==================== SCREEN ==================== */
+@media screen {
+    body {
+        background: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        min-width: fit-content;
+    }
+    .cv-page {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* ==================== TOOLBAR ==================== */
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.toolbar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    color: #ffffff;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-decoration: none;
+}
+.toolbar-btn:hover {
+    opacity: 0.85;
+}
+.toolbar-btn svg {
+    width: 18px;
+    height: 18px;
+}
+.btn-red {
+    background: #ff3131;
+}
+.btn-dark {
+    background: #000000;
+}
+/* ==================== PRINT ==================== */
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+    }
+    body {
+        display: block;
+    }
+    .cv-page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        box-shadow: none;
+        page-break-after: avoid;
+    }
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    .toolbar,
+    .download-btn {
+        display: none !important;
+    }
+}
+
+/* ==================== IMPORT MODAL ==================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.modal-overlay.active {
+    display: flex;
+}
+.modal {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+.modal h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #000000;
+}
+.modal-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #d9d9d9;
+}
+.modal-tab {
+    padding: 8px 20px;
+    background: none;
+    border: none;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #999;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+}
+.modal-tab.active {
+    color: #000;
+    border-bottom-color: #ff3131;
+}
+.modal-panel {
+    display: none;
+}
+.modal-panel.active {
+    display: block;
+}
+.modal textarea {
+    width: 100%;
+    height: 200px;
+    font-family: monospace;
+    font-size: 12px;
+    padding: 12px;
+    border: 2px solid #d9d9d9;
+    border-radius: 6px;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+.modal .drop-zone {
+    border: 2px dashed #d9d9d9;
+    border-radius: 6px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    margin-bottom: 15px;
+}
+.modal .drop-zone:hover,
+.modal .drop-zone.dragover {
+    border-color: #ff3131;
+    background: #fff5f5;
+}
+.modal .drop-zone input[type="file"] {
+    display: none;
+}
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.modal-actions button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+}
+.modal-actions .btn-cancel {
+    background: #d9d9d9;
+    color: #000;
+}
+.modal-actions .btn-confirm {
+    background: #ff3131;
+    color: #fff;
+}

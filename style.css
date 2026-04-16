@@ -111,7 +111,7 @@ h1 {
     font-weight: 900;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    display: block;
+    display: inline-block;
     width: fit-content;
     padding: 0cm 0.2cm;
     line-height: 1.4;

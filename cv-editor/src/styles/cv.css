@@ -34,7 +34,7 @@
     grid-template-columns: 7.69cm 1fr;
     overflow: hidden;
     background: #ffffff;
-    font-family: "Zen Maru Gothic", sans-serif;
+    font-family: var(--font-zen-maru), "Zen Maru Gothic", sans-serif;
     font-size: 10pt;
     line-height: 1.4;
     color: #000000;
@@ -92,18 +92,19 @@
     font-weight: 400;
     letter-spacing: 0.08em;
     text-align: center;
-    line-height: 1.1;
-    margin-bottom: -0.2cm;
+    line-height: 1;
+    margin-bottom: 0;
     white-space: nowrap;
 }
 
 /* ==================== SUBTITLE ==================== */
 .cv-subtitle {
-    font-family: "Zen Maru Gothic", sans-serif;
+    font-family: var(--font-zen-maru), "Zen Maru Gothic", sans-serif;
     font-size: 16pt;
     font-weight: 700;
     letter-spacing: 0em;
     text-align: center;
+    margin-top: 0;
     margin-bottom: 0.8cm;
 }
 
@@ -119,43 +120,29 @@
 /* ==================== SECTION TITLES - COMMON ==================== */
 .cv-left-column > section > h2,
 .cv-right-column > section > h2 {
-    font-family: "Zen Maru Gothic", sans-serif;
+    font-family: var(--font-zen-maru), "Zen Maru Gothic", sans-serif;
     font-size: 14pt;
     font-weight: 900;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     display: inline-block;
-    position: relative;
-    isolation: isolate;
     padding: 0cm 0.2cm;
     line-height: 1.4;
-    background: transparent;
-}
-.cv-left-column > section > h2::before,
-.cv-right-column > section > h2::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0.1em;
-    width: calc(100% - 0.1em);
-    height: 0.5em;
-    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: left bottom 0.1em;
+    background-size: calc(100% - 0.1em) 0.5em;
 }
 
 /* ==================== SECTION TITLES - LEFT COLUMN ==================== */
 .cv-left-column > section > h2 {
     margin-bottom: 0.1cm;
-}
-.cv-left-column > section > h2::before {
-    background: #ffffff;
+    background-image: linear-gradient(#ffffff, #ffffff);
 }
 
 /* ==================== SECTION TITLES - RIGHT COLUMN ==================== */
 .cv-right-column > section > h2 {
     margin-bottom: 0.2cm;
-}
-.cv-right-column > section > h2::before {
-    background: #dfdfdf;
+    background-image: linear-gradient(#dfdfdf, #dfdfdf);
 }
 
 /* ==================== LEFT COLUMN SECTIONS ==================== */
@@ -288,7 +275,7 @@
     flex: 1;
 }
 .cv-portfolio-label {
-    font-family: "Zen Maru Gothic", sans-serif;
+    font-family: var(--font-zen-maru), "Zen Maru Gothic", sans-serif;
     font-size: 14pt;
     font-weight: 700;
     margin-top: -0.05cm;

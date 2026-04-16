@@ -252,7 +252,7 @@ export const defaultTemplate: CVDocument = {
         {
           id: "form-1",
           title: "BUT information-communication",
-          detail: "(parcours Communication des organisations)",
+          detail: "(Communication des organisations)",
           institution: "IUT de Montreuil - Université Paris 8 (2023-2026)",
           isDetailRed: true,
           isTitleRed: false,

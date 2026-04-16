@@ -25,78 +25,6 @@ export default function Home() {
     }
   }
 
-  function formatHTML(node: Element, level = 0): string {
-    const indent = "  ".repeat(level);
-    const VOID_TAGS = new Set([
-      "area", "base", "br", "col", "embed", "hr", "img",
-      "input", "link", "meta", "param", "source", "track", "wbr",
-    ]);
-    const INLINE_TAGS = new Set([
-      "a", "span", "strong", "em", "b", "i", "u", "small", "sub", "sup",
-      "code", "mark", "abbr",
-    ]);
-
-    const tag = node.tagName.toLowerCase();
-    const attrs = Array.from(node.attributes)
-      .map((a) => ` ${a.name}="${a.value.replace(/"/g, "&quot;")}"`)
-      .join("");
-
-    if (VOID_TAGS.has(tag)) {
-      return `${indent}<${tag}${attrs}>`;
-    }
-
-    // Si l'élément ne contient que du texte ou des inlines, garde sur 1 ligne
-    const hasOnlyInlineContent = Array.from(node.childNodes).every((child) => {
-      if (child.nodeType === Node.TEXT_NODE) return true;
-      if (child.nodeType === Node.ELEMENT_NODE) {
-        return INLINE_TAGS.has((child as Element).tagName.toLowerCase());
-      }
-      return false;
-    });
-
-    if (hasOnlyInlineContent && node.childNodes.length > 0) {
-      const inner = node.innerHTML.trim();
-      return `${indent}<${tag}${attrs}>${inner}</${tag}>`;
-    }
-
-    if (node.childNodes.length === 0) {
-      return `${indent}<${tag}${attrs}></${tag}>`;
-    }
-
-    const childrenHTML = Array.from(node.childNodes)
-      .map((child) => {
-        if (child.nodeType === Node.ELEMENT_NODE) {
-          return formatHTML(child as Element, level + 1);
-        }
-        if (child.nodeType === Node.TEXT_NODE) {
-          const text = child.textContent?.trim();
-          return text ? `${"  ".repeat(level + 1)}${text}` : "";
-        }
-        if (child.nodeType === Node.COMMENT_NODE) {
-          return `${"  ".repeat(level + 1)}<!--${child.textContent}-->`;
-        }
-        return "";
-      })
-      .filter(Boolean)
-      .join("\n");
-
-    return `${indent}<${tag}${attrs}>\n${childrenHTML}\n${indent}</${tag}>`;
-  }
-
-  function handleExportHTML() {
-    if (!cvRef.current) return;
-    const cvPage = cvRef.current.querySelector(".cv-page");
-    if (!cvPage) return;
-    const html = formatHTML(cvPage);
-    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "CV_Sami_BENDRISS.html";
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-
   function handleConfirmImport() {
     if (activeTab === "paste" && pasteValue.trim()) {
       applyImport(pasteValue);
@@ -135,9 +63,10 @@ export default function Home() {
           </svg>
           Télécharger en PDF
         </button>
-        <button
-          onClick={handleExportHTML}
-          className="inline-flex items-center gap-2 px-6 py-2.5 bg-black text-white font-bold rounded-md hover:opacity-85 transition-opacity cursor-pointer"
+        <a
+          href="/cv.html"
+          download="cv.html"
+          className="inline-flex items-center gap-2 px-6 py-2.5 bg-black text-white font-bold rounded-md hover:opacity-85 transition-opacity cursor-pointer no-underline"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
             <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
@@ -145,7 +74,7 @@ export default function Home() {
             <line x1="12" y1="16" x2="12" y2="4" />
           </svg>
           Exporter HTML
-        </button>
+        </a>
         <button
           onClick={() => setShowModal(true)}
           className="inline-flex items-center gap-2 px-6 py-2.5 bg-black text-white font-bold rounded-md hover:opacity-85 transition-opacity cursor-pointer"

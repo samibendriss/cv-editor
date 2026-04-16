@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sync-template": "node -e \"require('fs').copyFileSync('../cv.html','public/cv.html')\"",
+    "predev": "pnpm run sync-template",
+    "prebuild": "pnpm run sync-template",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

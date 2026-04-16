@@ -39,13 +39,6 @@
     line-height: 1.4;
     color: #000000;
     overflow-wrap: break-word;
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto;
-    text-rendering: optimizeLegibility;
-    font-synthesis: none;
-}
-.cv-page * {
-    font-synthesis: none;
 }
 
 /* ==================== LEFT COLUMN ==================== */
@@ -92,8 +85,8 @@
     font-weight: 400;
     letter-spacing: 0.08em;
     text-align: center;
-    line-height: 1;
-    margin-bottom: 0;
+    line-height: 1.1;
+    margin-bottom: -0.2cm;
     white-space: nowrap;
 }
 
@@ -104,7 +97,6 @@
     font-weight: 700;
     letter-spacing: 0em;
     text-align: center;
-    margin-top: 0;
     margin-bottom: 0.8cm;
 }
 

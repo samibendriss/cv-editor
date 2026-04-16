@@ -1,0 +1,7 @@
+[build]
+  base    = "cv-editor"
+  command = "pnpm install && pnpm build"
+  publish = "cv-editor/.next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

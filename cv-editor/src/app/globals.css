@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f0f0f0;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-zen-maru);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-zen-maru), "Zen Maru Gothic", sans-serif;
+}
+
+/* ==================== PRINT ==================== */
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+  body {
+    display: block;
+  }
+  .cv-page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    box-shadow: none;
+    page-break-after: avoid;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

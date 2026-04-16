@@ -1,0 +1,316 @@
+/* ==================== FONTS ==================== */
+@font-face {
+    font-family: "Giaza";
+    src: url("/fonts/Giaza.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Zen Maru Gothic";
+    src: local("Zen Maru Gothic");
+    font-display: swap;
+}
+
+/* ==================== RESET ==================== */
+.cv-page *, .cv-page *::before, .cv-page *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==================== PAGE ==================== */
+@page {
+    size: A4;
+    margin: 0;
+}
+
+/* ==================== CV PAGE CONTAINER ==================== */
+.cv-page {
+    width: 21cm;
+    height: 29.7cm;
+    display: grid;
+    grid-template-columns: 7.69cm 1fr;
+    overflow: hidden;
+    background: #ffffff;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #000000;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    text-rendering: optimizeLegibility;
+    font-synthesis: none;
+}
+.cv-page * {
+    font-synthesis: none;
+}
+
+/* ==================== LEFT COLUMN ==================== */
+.cv-left-column {
+    grid-column: 1;
+    grid-row: 1;
+    background: #d9d9d9;
+    padding: 1cm 0.5cm 0.35cm;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== RIGHT COLUMN ==================== */
+.cv-right-column {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 1.2cm 1cm 0.4cm 1cm;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== PHOTO ==================== */
+.cv-photo-container {
+    width: 5.75cm;
+    height: 5.75cm;
+    border-radius: 50%;
+    border: 5px solid #000000;
+    overflow: hidden;
+    margin: 0 auto 0.45cm;
+    margin-bottom: 0.3cm;
+    flex-shrink: 0;
+}
+.cv-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==================== NAME (H1) ==================== */
+.cv-page h1 {
+    font-family: "Giaza", serif;
+    font-size: 36pt;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: -0.2cm;
+    white-space: nowrap;
+}
+
+/* ==================== SUBTITLE ==================== */
+.cv-subtitle {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 16pt;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 0.8cm;
+}
+
+/* ==================== PROFILE ==================== */
+.cv-profil p {
+    font-size: 11pt;
+    font-weight: 700;
+    font-style: normal;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+/* ==================== SECTION TITLES - COMMON ==================== */
+.cv-left-column > section > h2,
+.cv-right-column > section > h2 {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14pt;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    isolation: isolate;
+    padding: 0cm 0.2cm;
+    line-height: 1.4;
+    background: transparent;
+}
+.cv-left-column > section > h2::before,
+.cv-right-column > section > h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.1em;
+    width: calc(100% - 0.1em);
+    height: 0.5em;
+    z-index: -1;
+}
+
+/* ==================== SECTION TITLES - LEFT COLUMN ==================== */
+.cv-left-column > section > h2 {
+    margin-bottom: 0.1cm;
+}
+.cv-left-column > section > h2::before {
+    background: #ffffff;
+}
+
+/* ==================== SECTION TITLES - RIGHT COLUMN ==================== */
+.cv-right-column > section > h2 {
+    margin-bottom: 0.2cm;
+}
+.cv-right-column > section > h2::before {
+    background: #dfdfdf;
+}
+
+/* ==================== LEFT COLUMN SECTIONS ==================== */
+.cv-left-column > section {
+    margin-bottom: 0.5cm;
+}
+
+/* ==================== RIGHT COLUMN SECTIONS ==================== */
+.cv-right-column > section {
+    margin-bottom: 0.8cm;
+}
+
+/* ==================== CONTACT ITEMS ==================== */
+.cv-coordonnees {
+    text-align: center;
+}
+.cv-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3cm;
+    margin-bottom: 0.15cm;
+    margin-left: 0.25cm;
+    font-size: 10pt;
+    font-weight: 700;
+}
+.cv-contact-item svg {
+    width: 0.5cm;
+    height: 0.5cm;
+    flex-shrink: 0;
+}
+.cv-contact-item .cv-linkedin-icon {
+    width: 0.5cm;
+    height: 0.5cm;
+    min-width: 0.5cm;
+    flex-shrink: 0;
+    border-radius: 3px;
+    display: block;
+}
+
+/* ==================== LINKS ==================== */
+.cv-page a {
+    color: #0061ff;
+    text-decoration: underline;
+    font-weight: 700;
+}
+.cv-contact-item a[href^="tel:"] {
+    color: #000000;
+    text-decoration: none;
+}
+.cv-contact-item a[href^="mailto:"] {
+    color: #000000;
+}
+
+/* ==================== LISTS ==================== */
+.cv-page ul {
+    list-style-type: disc;
+    padding-left: 1.2em;
+    margin: 0;
+}
+.cv-page li {
+    font-size: 10pt;
+    line-height: 1.4;
+    margin-bottom: 0.03cm;
+}
+
+/* ==================== EXPERIENCE ==================== */
+.cv-experience {
+    margin-bottom: 0.6cm;
+}
+.cv-experience:last-child {
+    margin-bottom: 0;
+}
+.cv-job-title {
+    font-weight: 700;
+    color: #ff3131;
+}
+.cv-company {
+    font-weight: 700;
+    text-decoration: underline;
+}
+.cv-date-line {
+    font-weight: 700;
+    margin-bottom: 0.08cm;
+}
+.cv-keyword {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* ==================== FORMATIONS ==================== */
+.cv-formation {
+    margin-bottom: 0.3cm;
+    font-weight: 700;
+}
+.cv-formation-title {
+    font-weight: 700;
+    text-decoration: underline;
+}
+.cv-formation-red {
+    color: #ff3131;
+    font-weight: 700;
+}
+
+/* ==================== LANGUES ==================== */
+.cv-lang-name {
+    font-weight: 700;
+}
+
+/* ==================== PORTFOLIO ==================== */
+.cv-portfolio {
+    margin-left: -0.35cm;
+    margin-right: -0.35cm;
+}
+.cv-portfolio-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.1cm;
+}
+.cv-qr-code {
+    width: 2.54cm;
+    height: 2.54cm;
+    flex-shrink: 0;
+}
+.cv-portfolio-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1cm;
+    min-width: 0;
+    flex: 1;
+}
+.cv-portfolio-label {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14pt;
+    font-weight: 700;
+    margin-top: -0.05cm;
+    margin-bottom: -0.1cm;
+    text-align: center;
+    max-width: 100%;
+    line-height: 1.2;
+}
+.cv-portfolio-url {
+    font-size: 8pt;
+    color: #0061ff;
+    text-decoration: underline;
+}
+/* Si l'URL est le dernier enfant (pas de flèche), espace plus généreux */
+.cv-portfolio-url:last-child {
+    margin-top: 0.2cm;
+}
+.cv-arrow {
+    width: 2.02cm;
+    height: auto;
+    mix-blend-mode: multiply;
+    align-self: flex-start;
+    margin-left: 0.3cm;
+}
+

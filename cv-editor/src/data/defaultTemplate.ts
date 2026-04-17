@@ -166,14 +166,14 @@ export const defaultTemplate: CVDocument = {
             },
             {
               text:
-                "Qualification et enrichissement de la base de données " +
-                "leads et clients.",
-            },
-            {
-              text:
                 "Community management LinkedIn et création de contenus " +
                 "(articles SEO et montage vidéo pour supports internes " +
                 "et promotionnels).",
+            },
+            {
+              text:
+                "Qualification et enrichissement de la base de données " +
+                "leads et clients.",
             },
             {
               text:

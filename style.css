@@ -35,7 +35,7 @@ html, body {
 }
 
 /* ==================== LEFT COLUMN ==================== */
-.left-column {
+.cv-left-column {
     grid-column: 1;
     grid-row: 1;
     background: #d9d9d9;
@@ -45,7 +45,7 @@ html, body {
 }
 
 /* ==================== RIGHT COLUMN ==================== */
-.right-column {
+.cv-right-column {
     grid-column: 2;
     grid-row: 1;
     padding: 1.2cm 1cm 0.4cm 1cm;
@@ -54,7 +54,7 @@ html, body {
 }
 
 /* ==================== PHOTO ==================== */
-.photo-container {
+.cv-photo-container {
     width: 5.75cm;
     height: 5.75cm;
     border-radius: 50%;
@@ -64,7 +64,7 @@ html, body {
     margin-bottom: 0.3cm;
     flex-shrink: 0;
 }
-.photo-container img {
+.cv-photo-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -84,7 +84,7 @@ h1 {
 }
 
 /* ==================== SUBTITLE ==================== */
-.subtitle {
+.cv-subtitle {
     font-family: "Zen Maru Gothic", sans-serif;
     font-size: 16pt;
     font-weight: 700;
@@ -94,7 +94,7 @@ h1 {
 }
 
 /* ==================== PROFILE ==================== */
-.profil p {
+.cv-profil p {
     font-size: 11pt;
     font-weight: 700;
     font-style: normal;
@@ -104,8 +104,8 @@ h1 {
 }
 
 /* ==================== SECTION TITLES - COMMON ==================== */
-.left-column > section > h2,
-.right-column > section > h2 {
+.cv-left-column > section > h2,
+.cv-right-column > section > h2 {
     font-family: "Zen Maru Gothic", sans-serif;
     font-size: 14pt;
     font-weight: 900;
@@ -121,29 +121,34 @@ h1 {
 }
 
 /* ==================== SECTION TITLES - LEFT COLUMN ==================== */
-.left-column > section > h2 {
+.cv-left-column > section > h2 {
     margin-bottom: 0.1cm;
     background-image: linear-gradient(#ffffff, #ffffff);
 }
 
 /* ==================== SECTION TITLES - RIGHT COLUMN ==================== */
-.right-column > section > h2 {
+.cv-right-column > section > h2 {
     margin-bottom: 0.2cm;
     background-image: linear-gradient(#dfdfdf, #dfdfdf);
 }
 
 /* ==================== LEFT COLUMN SECTIONS ==================== */
-.left-column > section {
+.cv-left-column > section {
     margin-bottom: 0.5cm;
 }
 
 /* ==================== RIGHT COLUMN SECTIONS ==================== */
-.right-column > section {
+.cv-right-column > section {
     margin-bottom: 0.8cm;
 }
 
+/* ==================== COORDONNEES ==================== */
+.cv-coordonnees {
+    text-align: center;
+}
+
 /* ==================== CONTACT ITEMS ==================== */
-.contact-item {
+.cv-contact-item {
     display: flex;
     align-items: center;
     gap: 0.3cm;
@@ -152,12 +157,12 @@ h1 {
     font-size: 10pt;
     font-weight: 700;
 }
-.contact-item svg {
+.cv-contact-item svg {
     width: 0.5cm;
     height: 0.5cm;
     flex-shrink: 0;
 }
-.contact-item .linkedin-icon {
+.cv-contact-item .cv-linkedin-icon {
     width: 0.5cm;
     height: 0.5cm;
     min-width: 0.5cm;
@@ -172,15 +177,11 @@ a {
     text-decoration: underline;
     font-weight: 700;
 }
-.contact-link {
+.cv-contact-item a[href^="tel:"] {
     color: #000000;
     text-decoration: none;
 }
-.contact-item a[href^="tel:"] {
-    color: #000000;
-    text-decoration: none;
-}
-.contact-item a[href^="mailto:"] {
+.cv-contact-item a[href^="mailto:"] {
     color: #000000;
 }
 
@@ -197,82 +198,82 @@ li {
 }
 
 /* ==================== EXPERIENCE ==================== */
-.experience {
+.cv-experience {
     margin-bottom: 0.6cm;
 }
-.experience:last-child {
+.cv-experience:last-child {
     margin-bottom: 0;
 }
-.job-title {
+.cv-job-title {
     font-weight: 700;
     /* text-decoration: underline; */
     color: #ff3131;
 }
-.company {
+.cv-company {
     font-weight: 700;
     text-decoration: underline;
 }
-.date-line {
+.cv-date-line {
     font-weight: 700;
     margin-bottom: 0.08cm;
 }
-.keyword {
+.cv-keyword {
     font-weight: 700;
     text-decoration: underline;
 }
 
 /* ==================== FORMATIONS ==================== */
-.formation {
+.cv-formation {
     margin-bottom: 0.3cm;
     font-weight: 700;
 }
-.formation-title {
+.cv-formation-title {
     font-weight: 700;
     text-decoration: underline;
 }
-.formation-red {
+.cv-formation-red {
     color: #ff3131;
     font-weight: 700;
 }
 
 /* ==================== LANGUES ==================== */
-.lang-name {
+.cv-lang-name {
     font-weight: 700;
 }
 
 /* ==================== PORTFOLIO ==================== */
-.portfolio {
+.cv-portfolio {
     margin-left: -0.2cm;
 }
-.portfolio-content {
+.cv-portfolio-content {
     display: flex;
     align-items: center;
     gap: 0.3cm;
 }
-.qr-code {
+.cv-qr-code {
     width: 2.54cm;
     height: 2.54cm;
     flex-shrink: 0;
 }
-.portfolio-right {
+.cv-portfolio-right {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.1cm;
 }
-.portfolio-label {
+.cv-portfolio-label {
     font-family: "Zen Maru Gothic", sans-serif;
     font-size: 14pt;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: -0.2cm;
 }
-.portfolio-url {
+.cv-portfolio-url {
     font-size: 8pt;
     color: #0061ff;
     text-decoration: underline;
 }
-.arrow {
+.cv-arrow {
     width: 2.02cm;
     height: auto;
     mix-blend-mode: multiply;

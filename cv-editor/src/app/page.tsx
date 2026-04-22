@@ -1,27 +1,25 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import CVRenderer from "@/components/cv-renderer/CVRenderer";
 import { defaultTemplate } from "@/data/defaultTemplate";
 
 export default function Home() {
-  const cvRef = useRef<HTMLDivElement>(null);
   const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState<"paste" | "file">("paste");
   const [pasteValue, setPasteValue] = useState("");
   const [dragover, setDragover] = useState(false);
+  const [importedHTML, setImportedHTML] = useState<string | null>(null);
 
   function applyImport(html: string) {
-    if (!cvRef.current) return;
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
     const newCV =
       doc.querySelector(".cv-page") ||
       doc.querySelector("main") ||
       doc.body;
-    const cvPage = cvRef.current.querySelector(".cv-page");
-    if (newCV && cvPage) {
-      cvPage.innerHTML = newCV.innerHTML;
+    if (newCV) {
+      setImportedHTML(newCV.innerHTML);
     }
   }
 
@@ -86,6 +84,14 @@ export default function Home() {
           </svg>
           Importer HTML
         </button>
+        {importedHTML !== null && (
+          <button
+            onClick={() => setImportedHTML(null)}
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#d9d9d9] text-black font-bold rounded-md hover:opacity-85 transition-opacity cursor-pointer"
+          >
+            Réinitialiser
+          </button>
+        )}
       </div>
 
       {/* Modal d'import */}
@@ -182,8 +188,12 @@ export default function Home() {
       )}
 
       {/* CV Preview */}
-      <div ref={cvRef} id="cv-print-wrapper" className="shadow-[0_0_15px_rgba(0,0,0,0.2)] print:!shadow-none">
-        <CVRenderer data={defaultTemplate} />
+      <div id="cv-print-wrapper" className="shadow-[0_0_15px_rgba(0,0,0,0.2)] print:!shadow-none">
+        {importedHTML !== null ? (
+          <main className="cv-page" dangerouslySetInnerHTML={{ __html: importedHTML }} />
+        ) : (
+          <CVRenderer data={defaultTemplate} />
+        )}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "sync-template": "node -e \"require('fs').copyFileSync('../cv.html','public/cv.html')\"",
+    "sync-template": "node -e \"const fs=require('fs');fs.copyFileSync('../cv.html','public/cv.html');fs.copyFileSync('../style.css','public/style.css');\"",
     "predev": "pnpm run sync-template",
     "prebuild": "pnpm run sync-template",
     "dev": "next dev",

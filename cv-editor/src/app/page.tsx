@@ -51,7 +51,7 @@ export default function Home() {
       {/* Toolbar */}
       <div className="flex gap-3 mb-4 flex-wrap justify-center print:hidden">
         <button
-          onClick={async () => { await document.fonts.ready; window.print(); }}
+          onClick={async () => { await document.fonts.ready; const prev = document.title; document.title = "BENDRISS-Sami_CV"; window.print(); document.title = prev; }}
           className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#ff3131] text-white font-bold rounded-md hover:opacity-85 transition-opacity cursor-pointer"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
